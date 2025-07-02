@@ -22,8 +22,18 @@ public partial class PucPage : ContentPage
 
     private async void OnAgregarClicked(object sender, EventArgs e)
     {
-        await vm.Agregar(codigoEntry.Text, nombreEntry.Text);
-        codigoEntry.Text = string.Empty;
-        nombreEntry.Text = string.Empty;
+        if (string.IsNullOrWhiteSpace(codigoEntry.Text) || string.IsNullOrWhiteSpace(nombreEntry.Text))
+        {
+            await DisplayAlert("Datos imcompletos", "Por favor, complete todos los campos.", "OK");            
+        }
+        else
+        {
+            await vm.Agregar(codigoEntry.Text, nombreEntry.Text);
+            codigoEntry.Text = string.Empty;
+            nombreEntry.Text = string.Empty;
+
+            codigoEntry.Focus();
+        }
+           
     }
 }
