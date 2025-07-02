@@ -4,29 +4,35 @@
              x:Class="AsientosFree.Views.PucPage"
              Title="Plan único de cuentas">
     
-    <VerticalStackLayout Padding="16" Spacing="12">
-        <Frame CornerRadius="12" Padding="16" HasShadow="True">
-            <VerticalStackLayout Spacing="8">
-                <Entry x:Name="codigoEntry" Placeholder="Código" Keyboard="Numeric" />
-                <Entry x:Name="nombreEntry" Placeholder="Nombre de la cuenta" />
-                <Button Text="Agregar cuenta" Clicked="OnAgregarClicked" BackgroundColor="#1976d2" TextColor="White" CornerRadius="8"/>
-            </VerticalStackLayout>
-        </Frame>
+    
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Frame CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Entry x:Name="codigoEntry" Placeholder="Código" Keyboard="Numeric" />
+                    <Entry x:Name="nombreEntry" Placeholder="Nombre de la cuenta" />
+                    <Button Text="Agregar cuenta" Clicked="OnAgregarClicked" BackgroundColor="#1976d2" TextColor="White" CornerRadius="8"/>
+                </VerticalStackLayout>
+            </Frame>
 
-        <Label Text="Cuentas registradas" FontAttributes="Bold" FontSize="18" Margin="0,12,0,4" />
-
-        <CollectionView x:Name="pucList" ItemsSource="{Binding Lista}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Margin="0,4" Padding="10" CornerRadius="8" BackgroundColor="#1976d2" HasShadow="False">
-                        <Grid ColumnDefinitions="80,*,Auto" RowDefinitions="Auto">
-                            <Label Text="{Binding Codigo}" FontAttributes="Bold" FontSize="16" Grid.Column="0" VerticalOptions="Center"/>
-                            <Label Text="{Binding Nombre}" FontSize="15" Grid.Column="1" VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+            <Label Text="Cuentas registradas" FontAttributes="Bold" FontSize="18" Margin="0,12,0,4" />
+            <ScrollView>
+            
+            <CollectionView x:Name="pucList" ItemsSource="{Binding Lista}" HeightRequest="800">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Frame>
+                                <StackLayout Orientation="Horizontal" Spacing="16">
+                                    <Label Text="{Binding Codigo}" VerticalOptions="Center" />
+                                    <Label Text="{Binding Nombre}" VerticalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        </VerticalStackLayout>
+    
 
 </ContentPage>
