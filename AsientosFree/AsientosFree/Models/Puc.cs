@@ -11,6 +11,9 @@ namespace AsientosFree.Models
     {
         [PrimaryKey]
         public string Codigo { get; set; }
+
         public string Nombre { get; set; }
+
+        public string DisplayText => $"{Codigo} | {Nombre}";
     }
 }

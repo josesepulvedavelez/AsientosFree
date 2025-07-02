@@ -11,9 +11,13 @@ namespace AsientosFree.Models
     {
         [PrimaryKey, AutoIncrement]
         public int TransaccionId { get; set; }
-        public DateTime Fecha { get; set; }
+
+        public int No { get; set; }
+
         public string Cuenta { get; set; }
-        public string Debito { get; set; }
-        public string Credito { get; set; }
+
+        public decimal Debito { get; set; }
+
+        public decimal Credito { get; set; }
     }
 }
