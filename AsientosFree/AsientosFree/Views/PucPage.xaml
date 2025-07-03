@@ -5,6 +5,7 @@
              Title="Plan único de cuentas">
                 
         <VerticalStackLayout Padding="16" Spacing="12">
+            
             <!-- Formulario para ingresar Cuentas -->
             <Frame CornerRadius="12" Padding="16" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
@@ -23,11 +24,27 @@
                         <DataTemplate>
                             <StackLayout Padding="10">
                                 <Frame>
-                                    <StackLayout Orientation="Horizontal" Spacing="16">
-                                        <Label Text="{Binding Codigo}" VerticalOptions="Center" />
-                                        <Label Text="{Binding Nombre}" VerticalOptions="Center" />
-                                    </StackLayout>
-                                </Frame>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label Text="{Binding Codigo}" VerticalOptions="Center" Grid.Column="0" />
+                                    <Label Text=" " Grid.Column="1"  />
+                                    <Label Text="{Binding Nombre}" VerticalOptions="Center" Grid.Column="2" />
+                                    <ImageButton Source="delete.png"
+                                                 BackgroundColor="Transparent"
+                                                 WidthRequest="30"
+                                                 HeightRequest="30"
+                                                 HorizontalOptions="End"
+                                                 Grid.Column="3"
+                                                 Clicked="OnEliminarClicked"
+                                                 CommandParameter="{Binding .}" />
+                                </Grid>
+                            </Frame>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
