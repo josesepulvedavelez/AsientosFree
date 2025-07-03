@@ -26,5 +26,11 @@ namespace AsientosFree.ViewModels
             await Cargar();
         }
 
+        public async Task Eliminar(Puc puc)
+        {
+            await MauiProgram._appDb.DeletePucAsync(puc);
+            await Cargar();
+        }
+
     }
 }

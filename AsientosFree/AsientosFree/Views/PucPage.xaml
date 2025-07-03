@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AsientosFree.Views.PucPage"
              Title="Plan único de cuentas">
-    
-    
+                
         <VerticalStackLayout Padding="16" Spacing="12">
+            <!-- Formulario para ingresar Cuentas -->
             <Frame CornerRadius="12" Padding="16" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
                     <Entry x:Name="codigoEntry" Placeholder="Código" Keyboard="Numeric" />
@@ -15,24 +15,24 @@
             </Frame>
 
             <Label Text="Cuentas registradas" FontAttributes="Bold" FontSize="18" Margin="0,12,0,4" />
-            <ScrollView>
-            
-            <CollectionView x:Name="pucList" ItemsSource="{Binding Lista}" HeightRequest="800">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Frame>
-                                <StackLayout Orientation="Horizontal" Spacing="16">
-                                    <Label Text="{Binding Codigo}" VerticalOptions="Center" />
-                                    <Label Text="{Binding Nombre}" VerticalOptions="Center" />
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
-        </VerticalStackLayout>
-    
+
+        <!-- Tabla: filas -->
+        <ScrollView>
+                <CollectionView x:Name="pucList" ItemsSource="{Binding Lista}" HeightRequest="800">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Frame>
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
+                                        <Label Text="{Binding Codigo}" VerticalOptions="Center" />
+                                        <Label Text="{Binding Nombre}" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>   
 
 </ContentPage>

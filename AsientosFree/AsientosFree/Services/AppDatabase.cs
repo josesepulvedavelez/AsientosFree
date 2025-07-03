@@ -19,6 +19,7 @@ namespace AsientosFree.Services
             _db.CreateTableAsync<Transaccion>();
         }
 
+        /* Plan unico de cuentas */
         public Task<List<Puc>> GetPucsAsync()
         {
             return _db.Table<Puc>().ToListAsync();
@@ -29,6 +30,13 @@ namespace AsientosFree.Services
             return _db.InsertAsync(puc);
         }
 
+        public Task<int> DeletePucAsync(Puc puc)
+        {
+            return _db.DeleteAsync(puc);
+        }
+
+
+        /* Transacciones */
         public Task<List<Transaccion>> GetTransaccionesAsync()
         {
             return _db.Table<Transaccion>().ToListAsync();
@@ -37,6 +45,11 @@ namespace AsientosFree.Services
         public Task<int> AddTransaccionAsync(Transaccion transaccion)
         {
             return _db.InsertAsync(transaccion);
+        }
+        
+        public Task<int> DeleteTransaccionAsync(Transaccion transaccion)
+        {
+            return _db.DeleteAsync(transaccion);
         }
 
     }
