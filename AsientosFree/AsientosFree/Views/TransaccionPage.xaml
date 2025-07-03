@@ -11,7 +11,8 @@
             <VerticalStackLayout Spacing="8">
 
                 <Entry x:Name="NoEntry"
-                       Placeholder="Numero transaccion" />
+                       Placeholder="Número transacción"
+                       Keyboard="Numeric" />
 
                 <Picker x:Name="pickerPuc"
                         Title="Elige una cuenta PUC"
@@ -24,19 +25,20 @@
 
                 <HorizontalStackLayout>
                     <RadioButton x:Name="radioDebito"
-                                 Content="Debito"
+                                 Content="Débito"
                                  GroupName="Tipo"
                                  IsChecked="True" />
                     <RadioButton x:Name="radioCredito"
-                                 Content="Credito"
+                                 Content="Crédito"
                                  GroupName="Tipo" />
                 </HorizontalStackLayout>
 
-                <Button Text="Agregar Transaccion" Clicked="OnAgregarClicked" />
+                <Button Text="Agregar Transacción"
+                        Clicked="OnAgregarClicked" />
             </VerticalStackLayout>
         </Frame>
 
-        <!-- Tabla: encabezado -->
+        <!-- Encabezado de tabla -->
         <Grid Padding="10,5,10,0" ColumnSpacing="16">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50" />
@@ -51,25 +53,62 @@
             <Label Text="Crédito" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" />
         </Grid>
 
-        <!-- Tabla: filas -->
-        <CollectionView x:Name="transaccionList"
-                        ItemsSource="{Binding Lista}"
-                        HeightRequest="800">
+        <!-- Transacciones agrupadas -->
+        <CollectionView ItemsSource="{Binding ListaAgrupada}"
+                        HeightRequest="800"
+                        SelectionMode="None">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10,5" ColumnSpacing="16">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="90" />
-                            <ColumnDefinition Width="90" />
-                        </Grid.ColumnDefinitions>
+                    <Frame CornerRadius="12" Padding="16" HasShadow="True" Margin="0,10,0,0" BackgroundColor="Black">
+                        <VerticalStackLayout Spacing="8">
 
-                        <Label Text="{Binding No}" Grid.Column="0" VerticalOptions="Center" HorizontalTextAlignment="Start" />
-                        <Label Text="{Binding Cuenta}" Grid.Column="1" VerticalOptions="Center" HorizontalTextAlignment="Start" />
-                        <Label Text="{Binding Debito}" Grid.Column="2" VerticalOptions="Center" HorizontalTextAlignment="End" />
-                        <Label Text="{Binding Credito}" Grid.Column="3" VerticalOptions="Center" HorizontalTextAlignment="End" />
-                    </Grid>
+                            <!-- Título del grupo -->
+                            <Label Text="{Binding No, StringFormat='Transacción No: {0}'}"
+                                   FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="White" />
+
+                            <!-- Lista de transacciones del grupo -->
+                            <CollectionView ItemsSource="{Binding Detalles}"
+                                            
+                                            SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="5" ColumnSpacing="16">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="90" />
+                                                <ColumnDefinition Width="90" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding No}" Grid.Column="0" TextColor="White" />
+                                            <Label Text="{Binding Cuenta}" Grid.Column="1" TextColor="White" />
+                                            <Label Text="{Binding Debito}" Grid.Column="2" HorizontalTextAlignment="End" TextColor="White" />
+                                            <Label Text="{Binding Credito}" Grid.Column="3" HorizontalTextAlignment="End" TextColor="White" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <!-- Totales por grupo -->
+                            <Grid Padding="5" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="" Grid.Column="0" />
+                                <Label Text="Totales:" Grid.Column="1" FontAttributes="Bold" TextColor="White" />
+                                <Label Text="{Binding TotalDebito}" Grid.Column="2" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="White" />
+                                <Label Text="{Binding TotalCredito}" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="White" />
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
