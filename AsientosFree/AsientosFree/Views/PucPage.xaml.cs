@@ -1,4 +1,5 @@
 
+using AsientosFree.Models;
 using AsientosFree.ViewModels;
 using System.Threading.Tasks;
 
@@ -33,7 +34,22 @@ public partial class PucPage : ContentPage
             nombreEntry.Text = string.Empty;
 
             codigoEntry.Focus();
-        }
-           
+        }           
     }
+
+    private async void OnEliminarClicked(object sender, EventArgs e)
+    {
+        var button = (ImageButton)sender;
+        var pucSeleccionado = (Puc)button.CommandParameter;
+
+        if (pucSeleccionado != null)
+        {
+            bool confirm = await DisplayAlert("Confirmar eliminación", "¿Estás seguro de eliminar esta cuenta PUC?", "Sí", "No");
+            if (confirm)
+            {
+                await vm.Eliminar(pucSeleccionado);
+            }
+        }
+    }
+
 }

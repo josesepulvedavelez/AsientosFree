@@ -67,4 +67,20 @@ public partial class TransaccionPage : ContentPage
         pickerPuc.SelectedIndex = -1;
         radioDebito.IsChecked = true;
     }
+
+    private async void OnEliminarClicked(object sender, EventArgs e)
+    {
+        var button = (ImageButton)sender;
+        var transaccionSeleccionada = (Transaccion)button.CommandParameter;
+
+        if (transaccionSeleccionada != null)
+        {
+            bool confirm = await DisplayAlert("Confirmar eliminación", "¿Estás seguro de eliminar esta transacción?", "Sí", "No");
+            if (confirm)
+            {
+                await vm.Eliminar(transaccionSeleccionada);
+            }
+        }
+    }
+
 }
