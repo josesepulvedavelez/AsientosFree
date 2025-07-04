@@ -32,5 +32,11 @@ namespace AsientosFree.ViewModels
             await Cargar();
         }
 
+        public async Task CargarDefault()
+        {
+            await MauiProgram._appDb.GetPucsDefaultAsync();
+            await Cargar();
+        }
+
     }
 }
