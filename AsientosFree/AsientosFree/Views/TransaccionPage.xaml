@@ -60,7 +60,7 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="12" Padding="16" HasShadow="True" Margin="0,10,0,0" BackgroundColor="Black">
+                    <Frame CornerRadius="12" Padding="16" HasShadow="True" Margin="0,10,0,0" >
                         <VerticalStackLayout Spacing="8">
 
                             <!-- Lista de transacciones del grupo -->
@@ -78,13 +78,13 @@
                                             </Grid.ColumnDefinitions>
 
                                             <!--<Label Text="{Binding No}" Grid.Column="1" TextColor="White" />-->
-                                            <Label Text="{Binding Cuenta}" Grid.Column="1" TextColor="White" />
-                                            <Label Text="{Binding Debito}" Grid.Column="2" HorizontalTextAlignment="End" TextColor="White" />
-                                            <Label Text="{Binding Credito}" Grid.Column="3" HorizontalTextAlignment="End" TextColor="White" />
-                                            <ImageButton Source="delete.png"
+                                            <Label Text="{Binding Cuenta}" Grid.Column="1" />
+                                            <Label Text="{Binding Debito, StringFormat='$ {0:N2}'}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                            <Label Text="{Binding Credito, StringFormat='$ {0:N2}'}" Grid.Column="3" HorizontalTextAlignment="End" />
+                                            <ImageButton Source="borrar.png"
                                                          BackgroundColor="Transparent"
-                                                         WidthRequest="30"
-                                                         HeightRequest="30"
+                                                         WidthRequest="25"
+                                                         HeightRequest="25"
                                                          HorizontalOptions="End"
                                                          Grid.Column="0"
                                                          Clicked="OnEliminarClicked"
@@ -104,13 +104,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Text="" Grid.Column="0" />                                 
-                                <Label Text="Totales:" Grid.Column="1" FontAttributes="Bold" TextColor="White" />
-                                <Label Text="{Binding TotalDebito}" Grid.Column="2" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="White" />
-                                <Label Text="{Binding TotalCredito}" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="White" />
+                                <Label Text="Totales:" Grid.Column="1" FontAttributes="Bold" />
+                                <Label Text="{Binding TotalDebito}" Grid.Column="2" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="{Binding TotalColor}" />
+                                <Label Text="{Binding TotalCredito}" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" TextColor="{Binding TotalColor}" />
                                 
                             </Grid>
-                            
-                            <Label Text="{Binding No, StringFormat='Transacción: {0}'}" FontAttributes="Bold" TextColor="White" />
+
+                            <Label Text="{Binding No, StringFormat='$ {0:N2}'}" FontAttributes="Bold" />
                             
                         </VerticalStackLayout>
                     </Frame>

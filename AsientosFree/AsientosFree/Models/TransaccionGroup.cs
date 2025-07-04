@@ -14,5 +14,6 @@ namespace AsientosFree.Models
 
         public decimal TotalDebito => Detalles.Sum(t => t.Debito);
         public decimal TotalCredito => Detalles.Sum(t => t.Credito);
+        public Color TotalColor => TotalDebito == TotalCredito ? Colors.Green : Colors.Red;
     }
 }

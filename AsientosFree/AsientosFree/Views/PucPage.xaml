@@ -35,10 +35,10 @@
                                     <Label Text="{Binding Codigo}" VerticalOptions="Center" Grid.Column="0" />
                                     <Label Text=" " Grid.Column="1"  />
                                     <Label Text="{Binding Nombre}" VerticalOptions="Center" Grid.Column="2" />
-                                    <ImageButton Source="delete.png"
+                                    <ImageButton Source="borrar.png"
                                                  BackgroundColor="Transparent"
-                                                 WidthRequest="30"
-                                                 HeightRequest="30"
+                                                 WidthRequest="25"
+                                                 HeightRequest="25"
                                                  HorizontalOptions="End"
                                                  Grid.Column="3"
                                                  Clicked="OnEliminarClicked"

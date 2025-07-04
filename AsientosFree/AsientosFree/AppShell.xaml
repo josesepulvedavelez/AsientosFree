@@ -9,8 +9,9 @@
     xmlns:views="clr-namespace:AsientosFree.Views">
 
     <TabBar>
-        <ShellContent Title="PUC" ContentTemplate="{DataTemplate views:PucPage}" />
-        <ShellContent Title="Transacciones" ContentTemplate="{DataTemplate views:TransaccionPage}" />
+        <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:Inicio}" Icon="inicio.png" />
+        <ShellContent Title="PUC" ContentTemplate="{DataTemplate views:PucPage}" Icon="puc.png" />
+        <ShellContent Title="Transacciones" ContentTemplate="{DataTemplate views:TransaccionPage}" Icon="transaccion.png" />
     </TabBar>
 
 </Shell>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AsientosFree.Views.Inicio"
+             Title="Asientos Free">
+
+    <VerticalStackLayout>
+        <Frame CornerRadius="12" Padding="30" HasShadow="True" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="700">
+            <VerticalStackLayout>
+                <Label 
+                       Text="Bienvenido a Asientos FREE!"
+                       FontSize="Title"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />   
+
+                <BoxView HeightRequest="30" BackgroundColor="Transparent" />
+
+                <Image 
+                    Source="taburete.png" />
+
+                <BoxView HeightRequest="30" BackgroundColor="Transparent" />
+
+                <Label Text="Asientos Free, una aplicación diseñada para facilitar el registro de asientos contables. Llevando un control detallado de sus transacciones financieras, asegurando que cada entrada cumpla con el principio de partida doble."
+                       FontSize="Large"
+                       HorizontalTextAlignment="Start" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>
