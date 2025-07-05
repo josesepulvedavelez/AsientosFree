@@ -23,16 +23,18 @@ public partial class PucPage : ContentPage
 
     private async void OnAgregarClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(codigoEntry.Text) || string.IsNullOrWhiteSpace(nombreEntry.Text))
+        if (string.IsNullOrWhiteSpace(codigoEntry.Text) || string.IsNullOrWhiteSpace(nombreEntry.Text) || naturalezaPicker.SelectedItem == null)
         {
             await DisplayAlert("Datos imcompletos", "Por favor, complete todos los campos.", "OK");            
         }
         else
         {
-            await vm.Agregar(codigoEntry.Text, nombreEntry.Text);
+            string naturaleza = naturalezaPicker.SelectedItem.ToString();
+            await vm.Agregar(codigoEntry.Text, nombreEntry.Text, naturaleza);
+
             codigoEntry.Text = string.Empty;
             nombreEntry.Text = string.Empty;
-
+            naturalezaPicker.SelectedItem = null;
             codigoEntry.Focus();
         }           
     }

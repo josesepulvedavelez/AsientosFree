@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AsientosFree.Views.Balance"
+             Title="Balance">
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Encanezado de tabla-->
+            <Grid Padding="10" ColumnSpacing="10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Cuenta" FontAttributes="Bold" Grid.Column="0" />
+                <Label Text="Débito" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="End" />
+                <Label Text="Crédito" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End" />
+                <Label Text="Saldo Débito" FontAttributes="Bold" Grid.Column="3" HorizontalTextAlignment="End" />
+                <Label Text="Saldo Crédito" FontAttributes="Bold" Grid.Column="4" HorizontalTextAlignment="End" />
+            </Grid>
+            <!-- Balance Items -->
+            <StackLayout>
+                <CollectionView ItemsSource="{Binding Lista}" HeightRequest="800">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="0" Padding="10" HasShadow="False">
+                                <Grid Padding="10" ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Cuenta}" Grid.Column="0" />
+                                    <Label Text="{Binding Debito, StringFormat='${0:N2}'}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="{Binding Credito, StringFormat='${0:N2}'}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                    <Label Text="{Binding SaldoDebito, StringFormat='${0:N2}'}" Grid.Column="3" HorizontalTextAlignment="End" />
+                                    <Label Text="{Binding SaldoCredito, StringFormat='${0:N2}'}" Grid.Column="4" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- Summary Section -->
+                <Frame CornerRadius="0" Padding="10" HasShadow="False" >
+                    <Grid Padding="10" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Totales" Grid.Column="0" FontAttributes="Bold" />
+                        <Label Text="" Grid.Column="1" />
+                        <Label Text="" Grid.Column="2" />
+                        <Label Text="{Binding TotalSaldoDebito, StringFormat='${0:N2}'}"  Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                        <Label Text="{Binding TotalSaldoCredito, StringFormat='${0:N2}'}" Grid.Column="4" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

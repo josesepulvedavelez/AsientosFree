@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AsientosFree.Views.Configuracion"
+             Title="Configuracion">
+    
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame CornerRadius="12" Padding="20" HasShadow="True">
+            <VerticalStackLayout Spacing="30">                
+                <Button Text="Resetear y Cargar PUC"
+                        Background="#1976d2"
+                        TextColor="White"
+                        CornerRadius="8" 
+                        Clicked="OnCargarDefaultClicked" />
+                
+                <Button Text="Resetear Transacciones"
+                        Background="#d32f2f"
+                        TextColor="White"
+                        CornerRadius="8" 
+                        Clicked="OnEliminarTransaccionesClicked" />
+
+                <Button Text="Resetear y cargar ejemplo de Transacciones"
+                        Background="#1976d2"
+                        TextColor="White"
+                        CornerRadius="8" 
+                        Clicked="OnCargarTransaccionesDefaultClicked" />                       
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+    
+</ContentPage>

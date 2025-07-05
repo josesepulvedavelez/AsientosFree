@@ -20,9 +20,9 @@ namespace AsientosFree.ViewModels
                 Lista.Add(item);
         }
 
-        public async Task Agregar(string codigo, string nombre)
+        public async Task Agregar(string codigo, string nombre, string naturaleza)
         {
-            await MauiProgram._appDb.AddPucAsync(new Puc { Codigo = codigo, Nombre = nombre });
+            await MauiProgram._appDb.AddPucAsync(new Puc { Codigo = codigo, Nombre = nombre, Naturaleza = naturaleza });
             await Cargar();
         }
 
