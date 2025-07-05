@@ -12,7 +12,7 @@
         <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:Inicio}" Icon="inicio.png" />
         <ShellContent Title="PUC" ContentTemplate="{DataTemplate views:PucPage}" Icon="puc.png" />
         <ShellContent Title="Transacciones" ContentTemplate="{DataTemplate views:TransaccionPage}" Icon="transaccion.png" />
-        <ShellContent Title="Balance" ContentTemplate="{DataTemplate views:Balance}" Icon="balance.png" />
+        <ShellContent Title="Balance prueba" ContentTemplate="{DataTemplate views:Balance}" Icon="balance.png" />
     </TabBar>
 
 </Shell>

@@ -11,7 +11,13 @@
                 <VerticalStackLayout Spacing="8">
                     <Entry x:Name="codigoEntry" Placeholder="Código" Keyboard="Numeric" />
                     <Entry x:Name="nombreEntry" Placeholder="Nombre de la cuenta" />
-                    <Button Text="Agregar cuenta" Clicked="OnAgregarClicked" BackgroundColor="#1976d2" TextColor="White" CornerRadius="8"/>
+                    <Picker x:Name="naturalezaPicker" Title="Seleccione Naturaleza">
+                        <Picker.Items>
+                            <x:String>Debito</x:String>
+                            <x:String>Credito</x:String>
+                    </Picker.Items>
+                    </Picker>                             
+                <Button Text="Agregar cuenta" Clicked="OnAgregarClicked" BackgroundColor="#1976d2" TextColor="White" CornerRadius="8"/>
                 </VerticalStackLayout>
             </Frame>
 

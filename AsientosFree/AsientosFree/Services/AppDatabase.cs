@@ -133,7 +133,6 @@ namespace AsientosFree.Services
         }
 
 
-
         /* Transacciones */
         public Task<List<Transaccion>> GetTransaccionesAsync()
         {
