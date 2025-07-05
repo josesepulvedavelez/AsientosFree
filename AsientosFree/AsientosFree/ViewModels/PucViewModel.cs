@@ -32,15 +32,5 @@ namespace AsientosFree.ViewModels
             await Cargar();
         }
 
-        /// <summary>
-        /// Reseta el PUC a un conjunto de cuentas predeterminado.
-        /// </summary>
-        /// <returns></returns>
-        public async Task CargarDefault()
-        {
-            await MauiProgram._appDb.GetPucsDefaultAsync();
-            await Cargar();
-        }
-
     }
 }

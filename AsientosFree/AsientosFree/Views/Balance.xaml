@@ -7,8 +7,6 @@
     <ScrollView>
         <VerticalStackLayout>
             <!-- Encanezado de tabla-->
-            <Label Text="Balance" FontSize="Large" FontAttributes="Bold" Margin="10" />
-            <!-- Lista de cuentas -->
             <Grid Padding="10" ColumnSpacing="10" BackgroundColor="Black">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="90" />
