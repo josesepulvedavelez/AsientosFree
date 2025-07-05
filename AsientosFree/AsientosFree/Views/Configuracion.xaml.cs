@@ -26,4 +26,24 @@ public partial class Configuracion : ContentPage
         }
     }
 
+    public async void OnEliminarTransaccionesClicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Confirmar", "¿Estás seguro de eliminar todas las transacciones?", "Sí", "No");
+        if (confirm)
+        {
+            await vm.EliminarTransacciones();
+            await DisplayAlert("Éxito", "Todas las transacciones han sido eliminadas.", "OK");
+        }
+    }
+
+    public async void OnCargarTransaccionesDefaultClicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Confirmar", "¿Estás seguro de cargar las transacciones de ejemplo?", "Sí", "No");
+        if (confirm)
+        {
+            await vm.CargarTransaccionesDefaultAsync();
+            await DisplayAlert("Éxito", "Transacciones de ejemplo cargadas.", "OK");
+        }
+    }
+
 }

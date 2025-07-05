@@ -2,12 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AsientosFree.Views.Balance"
-             Title="Balance"
-             BackgroundColor="Black">
+             Title="Balance">
     <ScrollView>
         <VerticalStackLayout>
             <!-- Encanezado de tabla-->
-            <Grid Padding="10" ColumnSpacing="10" BackgroundColor="Black">
+            <Grid Padding="10" ColumnSpacing="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="90" />
                     <ColumnDefinition Width="*" />
@@ -26,7 +25,7 @@
                 <CollectionView ItemsSource="{Binding Lista}" HeightRequest="800">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="0" Padding="10" HasShadow="False" BackgroundColor="Black">
+                            <Frame CornerRadius="0" Padding="10" HasShadow="False">
                                 <Grid Padding="10" ColumnSpacing="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="90" />
@@ -55,11 +54,11 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Text="Totales" TextColor="Black" Grid.Column="0" FontAttributes="Bold" />
+                        <Label Text="Totales" Grid.Column="0" FontAttributes="Bold" />
                         <Label Text="" Grid.Column="1" />
                         <Label Text="" Grid.Column="2" />
-                        <Label Text="{Binding TotalSaldoDebito, StringFormat='${0:N2}'}" TextColor="{Binding TotalColor}" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" />
-                        <Label Text="{Binding TotalSaldoCredito, StringFormat='${0:N2}'}" TextColor="{Binding TotalColor}" Grid.Column="4" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                        <Label Text="{Binding TotalSaldoDebito, StringFormat='${0:N2}'}"  Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                        <Label Text="{Binding TotalSaldoCredito, StringFormat='${0:N2}'}" Grid.Column="4" FontAttributes="Bold" HorizontalTextAlignment="End" />
                     </Grid>
                 </Frame>
             </StackLayout>

@@ -1,4 +1,5 @@
 ﻿using AsientosFree.Models;
+
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -19,22 +20,7 @@ namespace AsientosFree.Services
             _db.CreateTableAsync<Transaccion>();
         }
 
-
-        /* Plan unico de cuentas */        
-        public Task<List<Puc>> GetPucsAsync()
-        {
-            return _db.Table<Puc>().OrderBy(x => x.Codigo).ToListAsync();
-        }
-
-        public Task<int> AddPucAsync(Puc puc)
-        { 
-            return _db.InsertAsync(puc);
-        }
-
-        public Task<int> DeletePucAsync(Puc puc)
-        {
-            return _db.DeleteAsync(puc);
-        }
+        #region Configuracion
 
         /// <summary>
         /// Reseta el PUC a un conjunto de cuentas predeterminado.
@@ -132,8 +118,78 @@ namespace AsientosFree.Services
             return await _db.InsertAllAsync(cuentas);
         }
 
+        /// <summary>
+        /// Elimina todas las transacciones de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> DeleteAllTransaccionesAsync()
+        {
+            return await _db.DeleteAllAsync<Transaccion>();
+        }
 
-        /* Transacciones */
+        /// <summary>
+        /// Carga un conjunto de transacciones predeterminadas en la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> GetTransaccionesDefaultAsync()
+        { 
+            await _db.DeleteAllAsync<Transaccion>();
+
+            var transacciones = new List<Transaccion>    {                
+                new Transaccion { No = 1, Cuenta = "11100501 BANCOLOMBIA CTA CORRIENTE", Debito = 50000000, Credito = 0 },
+                new Transaccion { No = 1, Cuenta = "11051001 CAJA MENOR", Debito = 500000, Credito = 0 },
+                new Transaccion { No = 1, Cuenta = "3105 APORTES SOCIOS", Debito = 0, Credito = 50500000 },
+                                
+                new Transaccion { No = 2, Cuenta = "12043001 CDT EN MONEDA NACIONAL", Debito = 10000000, Credito = 0 },
+                new Transaccion { No = 2, Cuenta = "11100501 BANCOLOMBIA CTA CORRIENTE", Debito = 0, Credito = 10000000 },
+
+                new Transaccion { No = 3, Cuenta = "11100501 BANCOLOMBIA CTA CORRIENTE", Debito = 15000000, Credito = 0 },
+                new Transaccion { No = 3, Cuenta = "4105 VENTAS", Debito = 0, Credito = 15000000 },
+
+                new Transaccion { No = 4, Cuenta = "5105 SUELDOS", Debito = 8000000, Credito = 0 },
+                new Transaccion { No = 4, Cuenta = "11100501 BANCOLOMBIA CTA CORRIENTE", Debito = 0, Credito = 8000000 },
+
+                new Transaccion { No = 5, Cuenta = "11100502 BANCOLOMBIA CTA AHORROS", Debito = 20000000, Credito = 0 },
+                new Transaccion { No = 5, Cuenta = "210510 CREDITOS BANCARIOS", Debito = 0, Credito = 20000000 },
+
+                new Transaccion { No = 6, Cuenta = "12040501 ACCIONES EN SOCIEDADES NACIONALES", Debito = 5000000, Credito = 0 },
+                new Transaccion { No = 6, Cuenta = "11100502 BANCOLOMBIA CTA AHORROS", Debito = 0, Credito = 5000000 },
+
+                new Transaccion { No = 7, Cuenta = "11100503 BANCO DE BOGOTA CTA CORRIENTE", Debito = 12000000, Credito = 0 },
+                new Transaccion { No = 7, Cuenta = "4105 VENTAS", Debito = 0, Credito = 12000000 },
+
+                new Transaccion { No = 8, Cuenta = "11100504 BANCO DE BOGOTA CTA AHORROS", Debito = 3000000, Credito = 0 },
+                new Transaccion { No = 8, Cuenta = "210505 SOBREGIROS BANCARIOS", Debito = 0, Credito = 3000000 }
+            };
+
+            return await _db.InsertAllAsync(transacciones);
+        }
+
+        #endregion
+
+
+        #region Plan Único de Cuentas (PUC)
+
+        public Task<List<Puc>> GetPucsAsync()
+        {
+            return _db.Table<Puc>().OrderBy(x => x.Codigo).ToListAsync();
+        }
+
+        public Task<int> AddPucAsync(Puc puc)
+        { 
+            return _db.InsertAsync(puc);
+        }
+
+        public Task<int> DeletePucAsync(Puc puc)
+        {
+            return _db.DeleteAsync(puc);
+        }
+
+        #endregion
+
+
+        #region Transacciones
+        
         public Task<List<Transaccion>> GetTransaccionesAsync()
         {
             return _db.Table<Transaccion>().ToListAsync();
@@ -148,6 +204,11 @@ namespace AsientosFree.Services
         {
             return _db.DeleteAsync(transaccion);
         }
+
+        #endregion
+
+
+        #region Balances
 
         public async Task<List<Balance>> GetBalancesAsync()
         {
@@ -181,10 +242,13 @@ namespace AsientosFree.Services
                         SaldoCredito = saldoCredito
                     };
                 })
+                .OrderBy(t => t.Cuenta)
                 .ToList();
 
             return balances;
         }
+
+        #endregion
 
     }
 }
