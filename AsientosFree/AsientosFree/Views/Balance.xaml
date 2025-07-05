@@ -42,8 +42,8 @@
                                 <Label Text="{Binding Cuenta}" Grid.Column="0" />
                                 <Label Text="{Binding Debito, StringFormat='${0:N2}'}" Grid.Column="1" HorizontalTextAlignment="End" />
                                 <Label Text="{Binding Credito, StringFormat='${0:N2}'}" Grid.Column="2" HorizontalTextAlignment="End" />
-                                <Label Text="{Binding SaldoDebito, StringFormat='$ {0:N2}'}" Grid.Column="3" HorizontalTextAlignment="End" TextColor="{Binding TotalColor}" />
-                                <Label Text="{Binding SaldoCredito, StringFormat='${0:N2}'}" Grid.Column="4" HorizontalTextAlignment="End" TextColor="{Binding TotalColor}" />
+                                <Label Text="{Binding SaldoDebito, StringFormat='${0:N2}'}" Grid.Column="3" HorizontalTextAlignment="End" />
+                                <Label Text="{Binding SaldoCredito, StringFormat='${0:N2}'}" Grid.Column="4" HorizontalTextAlignment="End" />
                             </Grid>
                         </Frame>
                     </DataTemplate>

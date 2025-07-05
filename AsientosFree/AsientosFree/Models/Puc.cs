@@ -13,6 +13,7 @@ namespace AsientosFree.Models
         public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string Naturaleza { get; set; }
-        public Color TotalColor => Naturaleza == "Debito" ? Colors.Blue : Colors.Pink;
+        public string DisplayText => $"{Codigo} {Nombre}";
+        public Color TotalColor => Naturaleza == "Debito" ? Colors.Blue : Colors.Pink;                
     }
 }

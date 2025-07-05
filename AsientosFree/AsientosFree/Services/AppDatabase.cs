@@ -161,8 +161,8 @@ namespace AsientosFree.Services
                     var sumDebito = g.Sum(x => x.Debito);
                     var sumCredito = g.Sum(x => x.Credito);
 
-                    decimal? saldoDebito = null;
-                    decimal? saldoCredito = null;
+                    decimal saldoDebito = 0;
+                    decimal saldoCredito = 0;
 
                     if (sumDebito > sumCredito)
                     {
